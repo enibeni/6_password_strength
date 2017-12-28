@@ -1,8 +1,8 @@
 import string
 
 
-def check_pass_length_more_than(password, required_length):
-    if len(password) < required_length:
+def check_pass_length_more_than(password, length):
+    if len(password) < length:
         global password_strength
         password_strength -= 1
 
@@ -57,15 +57,15 @@ if __name__ == "__main__":
     print("enter your password:")
     password = input().strip(" ")
 
-    check_pass_length_more_than(password, 7)
+    check_pass_length_more_than(password, length=7)
     check_all_chars_are_not_the_same(password)
     check_all_chars_are_not_the_same_type(password)
     check_all_chars_are_not_the_same_case(password)
-    check_pass_length_more_than(password, 9)
+    check_pass_length_more_than(password, length=9)
     check_years_not_in_pass(password)
     check_pass_not_in_blacklist(password, blacklist)
     ckeck_pass_have_special_chars(password)
-    check_pass_length_more_than(password, 10)
+    check_pass_length_more_than(password, length=10)
     print("your password strength ->> {}".format(password_strength))
 
 
