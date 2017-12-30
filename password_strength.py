@@ -47,7 +47,7 @@ def enter_password():
         return password
     else:
         print("Password can't be empty! Please, try again")
-        exit(1)
+        return None
 
 
 if __name__ == "__main__":
@@ -60,6 +60,8 @@ if __name__ == "__main__":
     blacklist = load_blacklist_file("blacklist.txt")
 
     password = enter_password()
+    if password is None:
+        exit(1)
 
     password_strength -= (check_pass_length_more_than(
         password,
