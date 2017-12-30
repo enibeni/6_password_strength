@@ -42,7 +42,7 @@ def load_blacklist_file(filepath):
 
 
 def enter_password():
-    password = getpass.getpass("Enter your password:").strip(" ")
+    password = getpass.getpass("Enter your password:")
     if password != "":
         return password
     else:
@@ -63,29 +63,14 @@ if __name__ == "__main__":
     if password is None:
         exit(1)
 
-    password_strength -= (check_pass_length_more_than(
-        password,
-        length=easy_password_length
-    ) + check_all_chars_are_not_the_same(
-        password
-    ) + check_all_chars_are_not_the_same_type(
-        password
-    ) + check_all_chars_are_not_the_same_case(
-        password
-    ) + check_pass_length_more_than(
-        password,
-        length=normal_password_length
-    ) + check_years_not_in_pass(
-        password
-    ) + check_pass_not_in_blacklist(
-        password,
-        blacklist
-    ) + check_pass_not_without_special_chars(
-        password
-    ) + check_pass_length_more_than(
-        password,
-        length=hard_password_length
-    ))
+    password_strength -= sum([
+        check_pass_length_more_than(password, length=easy_password_length),
+        check_all_chars_are_not_the_same(password),
+        check_all_chars_are_not_the_same_type(password),
+        check_all_chars_are_not_the_same_case(password),
+        check_years_not_in_pass(password),
+        check_pass_not_in_blacklist(password, blacklist),
+        check_pass_not_without_special_chars(password),
+        check_pass_length_more_than(password, length=hard_password_length)
+    ])
     print("Your password strength is {}".format(password_strength))
-
-
