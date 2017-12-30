@@ -9,10 +9,9 @@ Run this script with Python 3.x. As an input data enter your password
 Example of script launch on Linux, Python 3.5:
 
 ```bash
-$ python lang_frequency.py 
-enter your password:
-mynotverystrongpass
-your password strength form 1 to 10 ->> 3
+$ python password_strength.py 
+Enter your password:
+Your password strength is 9
 ```
 
 # Project Goals
